@@ -34,6 +34,9 @@
 }
 
 .btn-addToCart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     background-color: #FFE0B3;
     border: none;
@@ -43,6 +46,10 @@
     position: absolute;
     bottom: 0;
     left: 0;
+}
+
+.btn-addToCart p {
+    margin-right: 5px;
 }
 
 .btn-addToCart:hover {
