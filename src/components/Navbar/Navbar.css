@@ -10,6 +10,11 @@
 
 .nav-list {
     display: flex;
+    list-style-type: none;
+}
+
+.nav-list li {
+    margin-right: 10px;
 }
 
 .navbar li a {
