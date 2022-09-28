@@ -5,7 +5,7 @@ import './Product.css'
 
 const Product = (props) => {
     const { product, handleAddToCart } = props;
-    const { name, id, img, seller, price, ratings } = product;
+    const { name, img, seller, price, ratings } = product;
     return (
         <div className='product'>
             <img src={img ? img : 'No Image FOUND'} alt="" />
