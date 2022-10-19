@@ -20,7 +20,6 @@ const Navbar = () => {
                         <li><Link to="/signup">SignUp</Link></li>
                     </>
                 }
-                <li>{user?.email}</li>
             </div>
         </div>
     );

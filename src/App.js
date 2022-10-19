@@ -10,6 +10,8 @@ import Error from './components/Error/Error';
 import { productsAndCartLoader } from './Loaders/productAndCartLoader';
 import Login from './components/Login/Login';
 import SignUp from './components/SignUp/SignUp';
+import Shipping from './components/Shipping/Shipping';
+import PrivateRoutes from './Routes/PrivateRoutes';
 function App() {
   const router = createBrowserRouter([
     {
@@ -31,7 +33,8 @@ function App() {
           loader: productsAndCartLoader,
           element: <Orders />
         },
-        { path: '/inventory', element: <Inventory /> },
+        { path: 'shipping', element: <PrivateRoutes><Shipping /> </PrivateRoutes> },
+        { path: '/inventory', element: <PrivateRoutes><Inventory /></PrivateRoutes> },
         { path: '/about', element: <About /> },
         { path: 'login', element: <Login /> },
         { path: 'signup', element: <SignUp /> },
