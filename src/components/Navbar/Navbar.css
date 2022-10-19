@@ -32,3 +32,13 @@
     height: 40px;
     width: 140px;
 }
+
+.btn-logOut {
+    background-color: red;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+}

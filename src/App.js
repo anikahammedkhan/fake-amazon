@@ -8,21 +8,33 @@ import Inventory from './components/Inventory/Inventory';
 import About from './components/About/About';
 import Error from './components/Error/Error';
 import { productsAndCartLoader } from './Loaders/productAndCartLoader';
+import Login from './components/Login/Login';
+import SignUp from './components/SignUp/SignUp';
 function App() {
-  const router= createBrowserRouter([
+  const router = createBrowserRouter([
     {
-      path: '/', 
+      path: '/',
       element: <Main></Main>,
       children: [
-        { path: '/', element: <Shop/> },
-        { path: '/shop',
-          loader: ()=> fetch('products.json'),
-         element: <Shop/> },
-        { path: '/orders',
+        {
+          path: '/',
+          loader: () => fetch('products.json'),
+          element: <Shop />
+        },
+        {
+          path: '/shop',
+          loader: () => fetch('products.json'),
+          element: <Shop />
+        },
+        {
+          path: '/orders',
           loader: productsAndCartLoader,
-         element: <Orders/> },
-        { path: '/inventory' , element: <Inventory/>},
-        { path: '/about', element: <About/> },
+          element: <Orders />
+        },
+        { path: '/inventory', element: <Inventory /> },
+        { path: '/about', element: <About /> },
+        { path: 'login', element: <Login /> },
+        { path: 'signup', element: <SignUp /> },
         { path: '*', element: <Error></Error> },
       ],
     }
