@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useLoaderData } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { addToDb, deleteShoppingCart, getStoredCart } from '../../utilities/fakedb.js';
 import Cart from '../Cart/Cart';
 import Product from '../Products/Product';
@@ -36,16 +36,27 @@ const Shop = () => {
         const savedCart = getStoredCart();
         // console.log(savedCart);
         const storedCart = [];
-        for (const id in savedCart) {
-            const addedProduct = products.find(product => product._id === id);
-            if (addedProduct) {
-                const quantity = savedCart[id];
-                addedProduct.quantity = quantity;
-                storedCart.push(addedProduct);
-            }
-        }
-        setCart(storedCart);
+        const keys = Object.keys(savedCart);
 
+        fetch('http://localhost:5000/productsByKeys', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(keys)
+        })
+            .then(res => res.json())
+            .then(data => {
+                for (const id in savedCart) {
+                    const addedProduct = data.find(product => product._id === id);
+                    if (addedProduct) {
+                        const quantity = savedCart[id];
+                        addedProduct.quantity = quantity;
+                        storedCart.push(addedProduct);
+                    }
+                }
+                setCart(storedCart);
+            })
     }, [products]);
 
 
